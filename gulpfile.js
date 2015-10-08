@@ -30,7 +30,7 @@ gulp.task('default', function() {
 
 gulp.task('serve', ['build-js', 'build-jade'], function() {
   browserSync.init({
-    server: './dist'
+    server: './build'
   });
 
   gulp.watch('client/templates/*.jade', ['build-jade']);
