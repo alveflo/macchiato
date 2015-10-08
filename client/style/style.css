@@ -1,0 +1,30 @@
+.subheader {
+  color: gray;
+}
+
+.userimg {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#content {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#statscontent {
+  margin-top: 50px;
+}
+
+.column {
+  text-align: center;
+}
+
+#userinfo {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-bottom: 30px;
+}
