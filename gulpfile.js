@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     jade = require('gulp-jade'),
     babel = require('gulp-babel'),
+    stylus = require('gulp-stylus'),
     browserSync = require('browser-sync').create();
 
 gulp.task('build-jade', function() {
@@ -12,9 +13,11 @@ gulp.task('build-jade', function() {
 });
 
 gulp.task('build-css', function() {
-  return gulp.src('client/style/*.css')
+  return gulp.src('client/style/*.styl')
+      .pipe(stylus({
+        compress: true
+      }))
       .pipe(gulp.dest('build/style'));
-
 });
 
 gulp.task('build-js', function() {
