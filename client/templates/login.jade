@@ -1,0 +1,40 @@
+doctype html
+html(lang="en")
+  include ./includes/head.jade
+  style(type='text/css').
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+
+    }
+    .form {
+      margin-top: 25px;
+    }
+    .column {
+      max-width: 450px;
+    }
+  body
+    .ui.middle.aligned.center.aligned.grid
+      .column
+        img(src='img/logo/logo64.png').image
+        form.ui.large.form
+          .ui.stacked.segment
+            h2.ui.red.header Sign in to your account
+            .field
+              .ui.left.icon.input
+                i.user.icon
+                input(type='text', name='email', placeholder='E-mail address')
+            .field
+              .ui.left.icon.input
+                i.lock.icon
+                input(type='password', name='password', placeholder='Password')
+            .ui.fluid.large.red.submit.button
+              p Login
+            .ui.error.message
+        .ui.message
+          p New to us? 
+            a Sign up!

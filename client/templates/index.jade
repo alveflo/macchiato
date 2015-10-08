@@ -1,21 +1,5 @@
 doctype html
 html(lang="en")
-  head
-    title Github stats
-    link(href='./assets/semanticui/semantic.min.css', rel='stylesheet')
-    link(href='./style/style.css', rel='stylesheet')
-    script(src='js/test.js')
+  include ./includes/head.jade
   body
     #content
-      #userinfo
-        img(src='/img/unknown.png').ui.small.circular.image.userimg
-        h2.header victorzki
-        p.subheader Gothenburg, Sweden
-      #statscontent.ui.grid
-        .three.column.row
-          .column
-            h1 Activity
-          .column
-            h1 Languages
-          .column
-            h1 Repositories

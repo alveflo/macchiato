@@ -1,30 +1,13 @@
-.subheader {
-  color: gray;
-}
-
-.userimg {
+/*#login-content {
+  width: 400px;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 15%;
 }
 
-#content {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+.ui[class*="center aligned"].grid {
+  -webkit-box-pack: center;
+  justify-content: center;
 }
-
-#statscontent {
-  margin-top: 50px;
-}
-
-.column {
-  text-align: center;
-}
-
-#userinfo {
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  padding-bottom: 30px;
-}
+*/
