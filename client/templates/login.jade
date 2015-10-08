@@ -1,26 +1,11 @@
 doctype html
 html(lang="en")
   include ./includes/head.jade
-  style(type='text/css').
-    body {
-      background-color: #DADADA;
-    }
-    body > .grid {
-      height: 100%;
-    }
-    .image {
-
-    }
-    .form {
-      margin-top: 25px;
-    }
-    .column {
-      max-width: 450px;
-    }
+  link(href='./style/login-page.css', rel='stylesheet')
   body
     .ui.middle.aligned.center.aligned.grid
       .column
-        img(src='img/logo/logo64.png').image
+        img(src='img/logo/logo64-gray.png').image.login.gray-logo-img
         form.ui.large.form
           .ui.stacked.segment
             h2.ui.red.header Sign in to your account
