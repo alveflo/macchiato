@@ -1,6 +1,9 @@
-head
-  title Makiato
-  link(href='./assets/semanticui/semantic.min.css', rel='stylesheet')
-  script(type='text/javascript', src='./assets/jquery.js')
-  script(type='text/javascript', src='./js/utils.js')
-  script(type='text/javascript', src='./assets/angular.js')
+title Makiato
+include ../mixins/utils.jade
++loadcss('./assets/semanticui/semantic.min.css')
++loadjs('./assets/jquery.js')
++loadjs('./assets/semanticui/semantic.min.js')
++loadjs('./assets/angular.js')
++loadjs('./assets/firebase.js')
++loadjs('./assets/angularfire.js')
++loadjs('./js/utils.js')

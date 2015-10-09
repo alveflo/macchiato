@@ -5,14 +5,15 @@
   "main": "gulpfile.js",
   "dependencies": {
     "bower": "^1.5.3",
-    "del": "^2.0.2",
     "browser-sync": "^2.9.10",
+    "del": "^2.0.2",
     "gulp-babel": "^5.2.1",
     "gulp-concat": "^2.6.0",
     "gulp-jade": "^1.1.0",
     "gulp-stylus": "^2.1.0",
     "jade": "^1.11.0",
-    "main-bower-files": "^2.9.0"
+    "main-bower-files": "^2.9.0",
+    "shortid": "^2.2.2"
   },
   "devDependencies": {},
   "scripts": {

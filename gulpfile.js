@@ -4,26 +4,30 @@ var gulp = require('gulp'),
     stylus = require('gulp-stylus'),
     browserSync = require('browser-sync').create(),
     mainBowerFiles = require('main-bower-files'),
-    del = require('del');
+    del = require('del'),
+    shortid = require('shortid');
 
 gulp.task('build-jade', function() {
   return gulp.src('client/templates/*.jade')
       .pipe(jade({
-        pretty: true
+        pretty: true,
+        locals: {
+          version: shortid.generate()
+        }
       }))
       .pipe(gulp.dest('build'));
 });
 
 gulp.task('build-stylus', function() {
-  return gulp.src('client/style/*.styl')
+  return gulp.src('client/style/**/*.styl')
       .pipe(stylus({
-        compress: true
+        compress: false
       }))
       .pipe(gulp.dest('build/style'));
 });
 
 gulp.task('build-js', function() {
-  return gulp.src('client/js/*.js')
+  return gulp.src('client/js/**/*.js')
       .pipe(gulp.dest('build/js'));
 });
 
@@ -53,10 +57,10 @@ gulp.task('serve', ['build-js', 'build-jade', 'build-stylus', 'copy-images', 'co
   });
 
   gulp.watch('client/templates/**/*.jade', ['build-jade']);
-  gulp.watch('client/style/*.css', ['build-css']);
-  gulp.watch('client/js/*.js', ['build-js']);
+  gulp.watch('client/style/**/*.styl', ['build-stylus']);
+  gulp.watch('client/js/**/*.js', ['build-js']);
 
-  gulp.watch('build/*.html').on('change', browserSync.reload);
-  gulp.watch('build/style/*.css').on('change', browserSync.reload);
-  gulp.watch('build/js/*.js').on('change', browserSync.reload);
+  gulp.watch('build/**/*.html').on('change', browserSync.reload);
+  gulp.watch('build/style/**/*.css').on('change', browserSync.reload);
+  gulp.watch('build/js/**/*.js').on('change', browserSync.reload);
 });

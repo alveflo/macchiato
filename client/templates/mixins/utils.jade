@@ -1,0 +1,5 @@
+mixin loadjs(url)
+  script(type='text/javascript', src="#{url}?rev=#{version}")
+
+mixin loadcss(url)
+  link(rel='stylesheet', href='#{url}?rev=#{version}')
