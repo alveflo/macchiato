@@ -1,10 +1,12 @@
 doctype html
-html(lang="en")
-  include ./includes/head.jade
-  link(href='./style/login-page.css', rel='stylesheet')
-  body
+html(lang='en')
+  head
+    include ./includes/head.jade
+    +loadcss('./style/login-page.css')
+    +loadjs('./js/ng-ctrl/loginCtrl.js')
+  body(ng-app='mLogin')
     .ui.middle.aligned.center.aligned.grid
-      .column
+      .column(ng-controller='LoginCtrl')
         img(src='img/logo/logo64-gray.png').image.login.gray-logo-img
         form.ui.large.form
           .ui.stacked.segment
@@ -12,14 +14,17 @@ html(lang="en")
             .field
               .ui.left.icon.input
                 i.user.icon
-                input(type='text', name='email', placeholder='E-mail address')
+                input(type='text', name='email', placeholder='E-mail address', ng-model='user.email')
             .field
               .ui.left.icon.input
                 i.lock.icon
-                input(type='password', name='password', placeholder='Password')
-            .ui.fluid.large.red.submit.button
+                input(type='password', name='password', placeholder='Password', ng-model='user.password')
+            button.ui.fluid.large.red.submit.button(ng-click='login()', ng-disabled='!(user.email && user.password)')
               p Login
-            .ui.error.message
+            .ui.login.error.message(ng-model='errorMsg', ng-class='{"hidden": !errorMsg}')
+              p {{errorMsg}}
+            .ui.login.success.message(ng-model='successMsg', ng-class='{"hidden": !successMsg}')
+              p {{successMsg}}
         .ui.message
-          p New to us? 
+          p New to us?
             a Sign up!
