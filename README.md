@@ -3,7 +3,8 @@ Front-end repository for makiato application.
 
 ### Installation
 ```
-$ sudo npm install
+$ npm install
+$ bower install
 ```
 ```terminal
 $ gulp serve

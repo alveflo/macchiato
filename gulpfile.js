@@ -37,17 +37,22 @@ gulp.task('copy-bower-components', function() {
       .pipe(gulp.dest('build/assets'));
 });
 
+gulp.task('copy-assets', function() {
+  return gulp.src('client/assets/**/*')
+      .pipe(gulp.dest('build/assets'));
+});
+
 gulp.task('clean', function() {
   return del('build/');
 });
 
-gulp.task('serve', ['build-js', 'build-jade', 'build-stylus', 'copy-images', 'copy-bower-components'], function() {
+gulp.task('serve', ['build-js', 'build-jade', 'build-stylus', 'copy-images', 'copy-bower-components', 'copy-assets'], function() {
   browserSync.init({
-    server: './build'
+    server: './build',
+    online: false
   });
 
   gulp.watch('client/templates/**/*.jade', ['build-jade']);
-  gulp.watch('client/templates/*.jade', ['build-jade']);
   gulp.watch('client/style/*.css', ['build-css']);
   gulp.watch('client/js/*.js', ['build-js']);
 
