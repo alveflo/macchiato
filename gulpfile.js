@@ -41,16 +41,16 @@ gulp.task('copy-bower-components', function() {
       .pipe(gulp.dest('build/assets'));
 });
 
-gulp.task('copy-assets', function() {
-  return gulp.src('client/assets/**/*')
-      .pipe(gulp.dest('build/assets'));
+gulp.task('copy-semanticui', function() {
+  return gulp.src('node_modules/semantic-ui/dist/**/*')
+      .pipe(gulp.dest('build/assets/semanticui'));
 });
 
 gulp.task('clean', function() {
   return del('build/');
 });
 
-gulp.task('serve', ['build-js', 'build-jade', 'build-stylus', 'copy-images', 'copy-bower-components', 'copy-assets'], function() {
+gulp.task('serve', ['build-js', 'build-jade', 'build-stylus', 'copy-images', 'copy-bower-components', 'copy-semanticui'], function() {
   browserSync.init({
     server: './build',
     online: false
