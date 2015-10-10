@@ -42,7 +42,7 @@ gulp.task('copy-bower-components', function() {
 });
 
 gulp.task('copy-semanticui', function() {
-  return gulp.src('node_modules/semantic-ui/dist/**/*')
+  return gulp.src('bower_components/semantic-ui/dist/**/*')
       .pipe(gulp.dest('build/assets/semanticui'));
 });
 
