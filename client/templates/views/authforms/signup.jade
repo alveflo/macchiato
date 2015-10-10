@@ -30,7 +30,7 @@ include ../../mixins/utils.jade
             label Check this if you're not a sith lord.
         button.ui.red.submit.button(ng-click='register()')
           p Create account!
-        button.ui.gray.button(onclick="location.href='#/'")
+        button.ui.gray.button(onclick="location.href='#'")
           p Cancel
         .ui.login.error.message(ng-model='errorMsg', ng-class='{"hidden": !errorMsg}')
           p {{errorMsg}}
