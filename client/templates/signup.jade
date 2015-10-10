@@ -1,0 +1,74 @@
+doctype html
+html(lang='en')
+  head
+    include ./includes/head.jade
+    +loadcss('./style/login-page.css')
+    +loadjs('./js/ng-ctrl/loginCtrl.js')
+
+  body(ng-app='mLogin')
+    .ui.middle.aligned.center.aligned.grid
+      #signup.column(ng-controller='SignupCtrl').left.aligned
+        center
+          img(src='img/logo/logo64-gray.png').image.login.gray-logo-img
+        form.ui.medium.form
+          .ui.stacked.segment
+            h2.ui.red.header.center.aligned Create new account
+            .two.fields
+              .field
+                label First name
+                .ui.left.icon.input
+                  i.user.icon
+                  input(type='text', name='firstname', placeholder='First name...', ng-model='user.firstname')
+              .field
+                label Last name
+                .ui.left.icon.input
+                  i.user.icon
+                  input(type='text', name='lastname', placeholder='Last name...', ng-model='user.lastname')
+
+            .field
+              label E-mail address
+              .ui.left.icon.input
+                i.user.icon
+                input(type='text', name='email', placeholder='E-mail address', ng-model='user.email')
+
+            .field
+              label Password
+              .ui.left.icon.input
+                i.lock.icon
+                input(type='password', name='password', placeholder='Password', ng-model='user.password')
+
+            .field
+              label Verify password
+              .ui.left.icon.input
+                i.lock.icon
+                input(type='password', name='verify-password', placeholder='Verify password', ng-model='user.verifiedpassword')
+
+            .field.inline
+              .ui.checkbox
+                input(type='checkbox', name='robotchecker', ng-model='robotchecker')
+                label Check this if you're not a sith lord.
+            button.ui.red.submit.button(ng-click='register()')
+              p Create account!
+            button.ui.gray.button(onclick="location.href='/login.html'")
+              p Cancel
+            .ui.login.error.message(ng-model='errorMsg', ng-class='{"hidden": !errorMsg}')
+              p {{errorMsg}}
+            .ui.login.success.message(ng-model='successMsg', ng-class='{"hidden": !successMsg}')
+              p {{successMsg}}
+
+    script(type='text/javascript').
+      $('.ui.form').form({
+        inline: true,
+        on: 'blur',
+        fields: {
+          'firstname': 'empty',
+          'lastname': 'empty',
+          'email': 'email',
+          'password': 'minLength[6]',
+          'verify-password': 'match[password]',
+          'robotchecker': 'checked'
+        },
+        onSuccess: function(event, fields) {
+          event.preventDefault();
+        }
+      });

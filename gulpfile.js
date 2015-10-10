@@ -47,8 +47,10 @@ gulp.task('copy-semanticui', function() {
 });
 
 gulp.task('clean', function() {
-  return del('build/');
+  return del.sync('build/');
 });
+
+gulp.task('default', ['clean', 'build-js', 'build-jade', 'build-stylus', 'copy-images', 'copy-bower-components', 'copy-semanticui']);
 
 gulp.task('serve', ['build-js', 'build-jade', 'build-stylus', 'copy-images', 'copy-bower-components', 'copy-semanticui'], function() {
   browserSync.init({

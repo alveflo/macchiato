@@ -24,3 +24,11 @@ app.controller('LoginCtrl', function($scope, fbRef) {
     });
   };
 });
+
+app.controller('SignupCtrl', function($scope, fbRef) {
+  $scope.register = function() {
+    if ($('.ui.form').form('is valid')) {
+      console.log('Looks good :)');
+    }
+  }
+});
