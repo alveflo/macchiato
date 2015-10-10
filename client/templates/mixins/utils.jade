@@ -3,3 +3,16 @@ mixin loadjs(url)
 
 mixin loadcss(url)
   link(rel='stylesheet', href='#{url}?rev=#{version}')
+
+mixin gray-logo(size)
+  img(src='img/logo/logo#{size}-gray.png').image.login.gray-logo-img
+  script(type='text/javascript').
+    $('.gray-logo-img')
+      .mouseover(function() {
+        var src = $(this).attr('src').replace('-gray.png', '.png');
+        $(this).attr('src', src);
+      })
+      .mouseout(function() {
+        var src = $(this).attr('src').replace('.png', '-gray.png');
+        $(this).attr('src', src);
+      });

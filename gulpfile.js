@@ -2,13 +2,23 @@ var gulp = require('gulp'),
     jade = require('gulp-jade'),
     babel = require('gulp-babel'),
     stylus = require('gulp-stylus'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    jshint = require('gulp-jshint'),
     browserSync = require('browser-sync').create(),
     mainBowerFiles = require('main-bower-files'),
     del = require('del'),
-    shortid = require('shortid');
+    shortid = require('shortid'),
+    combiner = require('stream-combiner2');
 
 gulp.task('build-jade', function() {
-  return gulp.src('client/templates/*.jade')
+  return gulp.src(
+      [
+        'client/templates/*.jade',
+        'client/templates/views/**/*.jade'
+      ], {
+        base: 'client/templates'
+      })
       .pipe(jade({
         pretty: true,
         locals: {
@@ -27,8 +37,25 @@ gulp.task('build-stylus', function() {
 });
 
 gulp.task('build-js', function() {
-  return gulp.src('client/js/**/*.js')
-      .pipe(gulp.dest('build/js'));
+  var buildAndConcat = function(path, filename, outPath) {
+    gulp.src(path)
+        .pipe(jshint({
+          'globals': {
+            "$": false,
+            "angular": false,
+            "Firebase": false
+          }
+        }))
+        .pipe(jshint.reporter('default'))
+        .pipe(concat(filename))
+        /*.pipe(uglify()).on('error', function(e) {
+          console.log('\x07', e.message);
+          return this.end();
+        })*/
+        .pipe(gulp.dest(outPath));
+  };
+  buildAndConcat('client/js/*.js', 'makiato.js', 'build/js');
+  return buildAndConcat('client/js/ng/**/*.js', 'ng-makiato.js', 'build/js');
 });
 
 gulp.task('copy-images', function() {
