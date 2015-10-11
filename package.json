@@ -10,7 +10,8 @@
     "express": "~4.13.1",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "shortid": "^2.2.2"
   },
   "devDependencies": {
     "better-console": "^0.2.4",
@@ -50,6 +51,7 @@
     "run-sequence": "^1.1.4",
     "shortid": "^2.2.2",
     "stream-combiner2": "^1.0.2",
+    "supervisor": "^0.9.1",
     "yamljs": "^0.2.4"
   },
   "scripts": {

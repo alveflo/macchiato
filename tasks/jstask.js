@@ -16,10 +16,10 @@ module.exports = function() {
         }))
         .pipe(jshint.reporter('default'))
         .pipe(concat(filename))
-        .pipe(uglify()).on('error', function(e) {
+      /*  .pipe(uglify()).on('error', function(e) {
           console.log('\x07', e.message);
           return this.end();
-        })
+        })*/
         .pipe(gulp.dest(outPath));
   };
   buildAndConcat(paths.client.js, 'makiato.js', paths.build.public.js);

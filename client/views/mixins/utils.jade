@@ -5,7 +5,8 @@ mixin loadcss(url)
   link(rel='stylesheet', href='#{url}?rev=#{version}')
 
 mixin gray-logo(size)
-  img(src='img/logo/logo#{size}-gray.png').image.login.gray-logo-img
+  a(href='/')
+    img(src='img/logo/logo#{size}-gray.png').image.login.gray-logo-img
   script(type='text/javascript').
     $('.gray-logo-img')
       .mouseover(function() {

@@ -1,7 +1,7 @@
 module.exports = {
   'client': {
-    'jade':     'client/templates/**/*.jade',
-    'stylus':   'client/style/**/*.styl',
+    'views':     'client/views/**/*.jade',
+    'style':   'client/style/**/*.styl',
     'js':       'client/js/*.js',
     'jsng':     'client/js/ng/**/*.js',
     'img': 'client/img/**/*.png',
@@ -11,8 +11,8 @@ module.exports = {
     'public': {
       'img': 'app/public/img',
       'js': 'app/public/js',
-      'js_assets': 'app/public/js/assets',
-      'js_assets_semantic': 'app/public/js/assets/semanticui',
+      'assets': 'app/public/assets',
+      'assets_semantic': 'app/public/assets/semanticui',
       'style': 'app/public/style',
     },
     'public_dir': 'app/public',

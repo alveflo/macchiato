@@ -3,7 +3,7 @@ var stylus = require('gulp-stylus'),
     paths = require('./paths');
 
 module.exports = function() {
-  return gulp.src(paths.client.stylus)
+  return gulp.src(paths.client.style)
       .pipe(stylus({
         compress: true
       }))

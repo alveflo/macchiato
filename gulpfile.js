@@ -7,7 +7,9 @@ var cleantask = require('./tasks/clean'),
     jstask = require('./tasks/jstask'),
     stylustask = require('./tasks/stylustask'),
     jadetask = require('./tasks/jadetask'),
-    copytask = require('./tasks/copy');
+    copytask = require('./tasks/copy'),
+    paths = require('./tasks/paths');
+
 
 // Build tasks, copies to build/ non uglified and compressed
 gulp.task('build-jade',       jadetask);
@@ -22,16 +24,15 @@ gulp.task('build', ['clean', 'build-jade', 'build-stylus', 'build-js', 'build-im
 gulp.task('default', ['build', 'serve']);
 
 gulp.task('serve', function() {
-  browserSync.init({
-    server: './build',
+  browserSync.init(null, {
+    proxy: 'http://localhost:3000',
+    port: 7000,
     online: false
   });
   // Watch for changes on jade, stylus and js-files and build when needed
-  gulp.watch('client/templates/**/*.jade', ['build-jade']);
-  gulp.watch('client/style/**/*.styl', ['build-stylus']);
-  gulp.watch('client/js/**/*.js', ['build-js']);
+  gulp.watch(paths.client.views, ['build-jade']);
+  gulp.watch(paths.client.style, ['build-stylus']);
+  gulp.watch([paths.client.js, paths.client.jsng], ['build-js']);
   // Watch for changes on html, css and js files and reload browser when needed
-  gulp.watch('build/**/*.html').on('change', browserSync.reload);
-  gulp.watch('build/style/**/*.css').on('change', browserSync.reload);
-  gulp.watch('build/js/**/*.js').on('change', browserSync.reload);
+  gulp.watch('app/**/*').on('change', browserSync.reload);
 });
