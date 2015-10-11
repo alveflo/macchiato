@@ -1,10 +1,6 @@
-var del = require('del');
+var del = require('del'),
+    paths = require('./paths');
 
-module.exports =  {
-  build: function() {
-    return del.sync('build/');
-  },
-  dist: function() {
-    return del.sync('dist/');
-  }
+module.exports = function() {
+  return del.sync(paths.build);
 };

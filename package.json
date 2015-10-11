@@ -4,6 +4,7 @@
   "description": "Front-end repository for makiato application.",
   "main": "gulpfile.js",
   "dependencies": {
+    "express": "^4.13.3",
     "jade": "^1.11.0"
   },
   "devDependencies": {

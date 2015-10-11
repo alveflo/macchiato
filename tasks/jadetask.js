@@ -1,38 +1,19 @@
 var jade = require('gulp-jade'),
     gulp = require('gulp'),
-    shortid = require('shortid');
+    shortid = require('shortid'),
+    paths = require('./paths');
 
-module.exports = {
-  build: function() {
-    return gulp.src(
-        [
-          'client/templates/*.jade',
-          'client/templates/views/**/*.jade'
-        ], {
-          base: 'client/templates'
-        })
-        .pipe(jade({
-          pretty: true,
-          locals: {
-            version: 'dev'
-          }
-        }))
-        .pipe(gulp.dest('build'));
-  },
-  dist: function() {
-    return gulp.src(
-        [
-          'client/templates/*.jade',
-          'client/templates/views/**/*.jade'
-        ], {
-          base: 'client/templates'
-        })
-        .pipe(jade({
-          pretty: false,
-          locals: {
-            version: shortid.generate()
-          }
-        }))
-        .pipe(gulp.dest('dist'));
-  }
-}
+module.exports = function() {
+//  var a =gulp.src('client/jade/views/**/*.jade', {
+//        base: 'client/jade'
+//      })
+//      .pipe(jade({
+//        pretty: false,
+//        locals: {
+//          version: shortid.generate()
+//        }
+//      }))
+//      .pipe(gulp.dest('build/'));
+  return gulp.src(paths.client.jade)
+      .pipe(gulp.dest(paths.build + '/templates'));
+};
