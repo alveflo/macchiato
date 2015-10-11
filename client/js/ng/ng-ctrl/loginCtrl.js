@@ -2,7 +2,7 @@
 
 var mLoginControllers = angular.module('mLoginControllers', []);
 
-mLoginControllers.controller('LoginCtrl', function($scope, fbRef) {
+mLoginControllers.controller('LoginCtrl', ['$scope', 'fbRef', function($scope, fbRef) {
   $scope.$on('$viewContentLoaded', function() {
     $(document).trigger('ready');
     $('.ui.form').form({
@@ -33,9 +33,9 @@ mLoginControllers.controller('LoginCtrl', function($scope, fbRef) {
       });
     }
   };
-});
+}]);
 
-mLoginControllers.controller('SignupCtrl', function($scope, fbRef) {
+mLoginControllers.controller('SignupCtrl', ['$scope', 'fbRef', function($scope, fbRef) {
   $scope.created = false;
   $scope.$on('$viewContentLoaded', function() {
     $('.ui.form').form({
@@ -68,4 +68,4 @@ mLoginControllers.controller('SignupCtrl', function($scope, fbRef) {
       });
     }
   };
-});
+}]);
