@@ -22,6 +22,6 @@ module.exports = function() {
         })
         .pipe(gulp.dest(outPath));
   };
-  buildAndConcat(paths.client.js, 'makiato.js', paths.build + '/js');
-  return buildAndConcat(paths.client.jsng, 'ng-makiato.js', paths.build +'/js');
+  buildAndConcat(paths.client.js, 'makiato.js', paths.build.public.js);
+  return buildAndConcat(paths.client.jsng, 'ng-makiato.js', paths.build.public.js);
 };

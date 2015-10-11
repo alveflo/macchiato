@@ -5,14 +5,14 @@ var gulp = require('gulp')
 module.exports = {
   images: function() {
       return gulp.src(paths.client.img)
-          .pipe(gulp.dest(paths.build + '/img'));
+          .pipe(gulp.dest(paths.build.public.img));
   },
   bower: function() {
     return gulp.src(mainBowerFiles())
-        .pipe(gulp.dest(paths.build + '/assets'));
+        .pipe(gulp.dest(paths.build.public.js_assets));
   },
   semantic: function() {
     return gulp.src(paths.client.semantic)
-        .pipe(gulp.dest(paths.build + '/assets/semanticui'));
+        .pipe(gulp.dest(paths.build.public.js_assets_semantic));
   }
 };

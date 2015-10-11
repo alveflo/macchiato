@@ -7,5 +7,5 @@ module.exports = function() {
       .pipe(stylus({
         compress: true
       }))
-      .pipe(gulp.dest(paths.build + '/style'));
+      .pipe(gulp.dest(paths.build.public.style));
 };

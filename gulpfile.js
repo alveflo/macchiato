@@ -16,8 +16,7 @@ gulp.task('build-js',         jstask);
 gulp.task('build-images',     copytask.images);
 gulp.task('build-bower',      copytask.bower);
 gulp.task('build-semanticui', copytask.semantic);
-gulp.task('clean',      cleantask);
-
+gulp.task('clean',            cleantask);
 gulp.task('build', ['clean', 'build-jade', 'build-stylus', 'build-js', 'build-images', 'build-bower', 'build-semanticui']);
 
 gulp.task('default', ['build', 'serve']);

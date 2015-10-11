@@ -8,8 +8,13 @@ Front-end repository for makiato application.
 $ npm install
 $ bower install
 ```
-```terminal
+```
 $ gulp serve
+```
+
+Run the app:
+```
+$ DEBUG=app:* npm start
 ```
 ### License
 MIT
