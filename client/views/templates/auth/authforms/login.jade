@@ -1,0 +1,25 @@
+include ../../../mixins/utils.jade
+.ui.middle.aligned.center.aligned.grid
+  .column
+    center
+      +gray-logo(64)
+    form.ui.large.form.left.aligned(action="/login/login", method="POST")
+      .ui.stacked.segment
+        h2.ui.red.header Sign in to your account
+        if message
+          .ui.login.error.message
+            p= message
+        .field
+          .ui.left.icon.input
+            i.user.icon
+            input(type='text', name='username', placeholder='Username', ng-model='user.username')
+        .field
+          .ui.left.icon.input
+            i.lock.icon
+            input(type='password', name='password', placeholder='Password', ng-model='user.password')
+        button.ui.fluid.large.red.submit.button
+          //(ng-click='login()')
+          p Login
+    .ui.message
+      p
+        a(href='#signup') Sign up!

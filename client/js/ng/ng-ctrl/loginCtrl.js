@@ -2,69 +2,71 @@
 
 var mLoginControllers = angular.module('mLoginControllers', []);
 
-mLoginControllers.controller('LoginCtrl', ['$scope', 'fbRef', function($scope, fbRef) {
+mLoginControllers.controller('LoginCtrl', ['$scope','$http',
+function($scope, $http) {
   $scope.$on('$viewContentLoaded', function() {
     $(document).trigger('ready');
     $('.ui.form').form({
       inline: true,
       on: 'blur',
       fields: {
-        'email': 'email',
+        'username': 'empty',
         'password': 'empty'
       },
-      onSuccess: function(event, fields) {
-        event.preventDefault();
-      }
     });
   });
   $scope.login = function() {
     if ($('.ui.form').form('is valid')) {
-      fbRef.authWithPassword({
-        email: $scope.user.email,
-        password: $scope.user.password
-      }, function(error, authData) {
-        $scope.errorMsg = $scope.successMsg = null;
-        if (error) {
-          $scope.errorMsg = error.message;
-        } else {
-          $scope.successMsg = 'Logged in!';
+      $http({
+        method: 'POST',
+        url: '/login/login',
+        data: $.param($scope.user),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
         }
-        $scope.$apply();
+      }).success(function(data) {
+        console.log(data);
+        if (data.success)
+          $scope.successMsg = 'Logged in!';
+        else {
+          $scope.errorMsg = data.errors;
+        }
       });
     }
   };
 }]);
 
-mLoginControllers.controller('SignupCtrl', ['$scope', 'fbRef', function($scope, fbRef) {
+mLoginControllers.controller('SignupCtrl', ['$scope','$http',
+function($scope, $http) {
   $scope.created = false;
   $scope.$on('$viewContentLoaded', function() {
     $('.ui.form').form({
       inline: true,
       on: 'blur',
       fields: {
+        'username': 'empty',
         'email': 'email',
         'password': 'minLength[6]',
         'verify-password': 'match[password]',
         'robotchecker': 'checked'
-      },
-      onSuccess: function(event, fields) {
-        event.preventDefault();
       }
     });
   });
   $scope.register = function() {
     if ($('.ui.form').form('is valid')) {
-      fbRef.createUser({
-        email: $scope.user.email,
-        password: $scope.user.password
-      }, function(error, userData) {
-        if (error) {
-          $scope.errorMsg = error.message;
-        } else {
-          $scope.successMsg = 'Account successfully created!';
-          $scope.created = true;
+      $http({
+        method: 'POST',
+        url: '/login/signup',
+        data: $.param($scope.user),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
         }
-        $scope.$apply();
+      }).success(function(data) {
+        if (data.success)
+          $scope.successMsg = 'Signed up!';
+        else {
+          $scope.errorMsg = data.errors;
+        }
       });
     }
   };

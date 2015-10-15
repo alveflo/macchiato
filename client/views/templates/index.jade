@@ -1,9 +1,10 @@
-doctype html
-html(lang="en")
-  include ../includes/head.jade
-  body
-    .ui.middle.aligned.center.aligned.grid
-      .column(style='margin-top:100px')
-        +gray-logo(64)
-        h1 makiato
-        a(href='/login').ui.inverted.red.button Login
+extends layout
+block content
+  .ui.middle.aligned.center.aligned.grid
+    .column(style='margin-top:100px')
+      +gray-logo(64)
+      h1 makiato
+      .ui.buttons
+        a(href='/login').ui.button Login
+        .or
+        a(href='/login#/signup').ui.button Sign up

@@ -1,12 +1,6 @@
 (function(){'use strict';})();
 
-var app = angular.module('mLogin', ['ngRoute', 'mLoginControllers', 'firebase']);
-
-app.value('fbURL', 'https://makiato-db.firebaseio.com/');
-
-app.service('fbRef', function(fbURL) {
-  return new Firebase(fbURL);
-});
+var app = angular.module('mLogin', ['ngRoute', 'mLoginControllers']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider

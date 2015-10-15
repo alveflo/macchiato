@@ -5,12 +5,23 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var shortid = require('shortid');
-
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var auth = require('./routes/auth');
-
+var mongoose = require('mongoose');
 var app = express();
+
+// Passport setup
+var passport = require('passport');
+var expressSession = require('express-session');
+var bCrypt = require('bcrypt-nodejs');
+
+app.use(expressSession({ secret: 'devSecret' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+var flash = require('connect-flash');
+app.use(flash());
+
+// initialize Passport
+require('./passport/init')(passport);
 
 // Generate app version number
 GLOBAL.makiatoVersion = shortid.generate();
@@ -27,9 +38,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/login', auth);
-app.use('/users', users);
+// Routes
+// Routes
+var index = require('./routes/index');
+var users = require('./routes/users');
+var auth = require('./routes/auth');
+var dashboard = require('./routes/dashboard');
+
+app.use('/', index(passport));
+app.use('/login', auth(passport));
+app.use('/users', users(passport));
+app.use('/dashboard', dashboard(passport));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -37,6 +56,8 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+
 
 // error handlers
 
@@ -50,6 +71,7 @@ if (app.get('env') === 'development') {
       error: err
     });
   });
+  mongoose.connect('mongodb://localhost:27017/makiato');
 }
 
 // production error handler
