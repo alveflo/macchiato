@@ -1,5 +1,7 @@
-extends layout
-block content
+doctype html
+html(lang="en")
+  include ../includes/head
+  body
   .ui.middle.aligned.center.aligned.grid
     .column(style='margin-top:100px')
       +gray-logo(64)
@@ -7,4 +9,4 @@ block content
       .ui.buttons
         a(href='/login').ui.button Login
         .or
-        a(href='/login#/signup').ui.button Sign up
+        a(href='/signup').ui.button Sign up

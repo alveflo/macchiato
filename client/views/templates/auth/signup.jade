@@ -1,0 +1,52 @@
+extends layout.jade
+block content
+  #signup.column
+    center
+      +gray-logo(64)
+    form.ui.medium.form(action="/login/signup", method="POST")
+      .ui.stacked.segment
+        h2.ui.red.header.center.aligned Create new account
+        .two.fields.right.aligned
+          .field
+            label Username
+            .ui.left.icon.input
+              i.user.icon
+              input(type='text', name='username', placeholder='Username', ng-model='user.username', ng-disabled='created')
+          .field
+            label E-mail address
+            .ui.left.icon.input
+              i.mail.icon
+              input(type='text', name='email', placeholder='E-mail address', ng-model='user.email', ng-disabled='created')
+        .two.fields
+          .field
+            label Password
+            .ui.left.icon.input
+              i.lock.icon
+              input(type='password', name='password', placeholder='Password', ng-model='user.password', ng-disabled='created')
+          .field
+            label Verify password
+            .ui.left.icon.input
+              i.lock.icon
+              input(type='password', name='verify-password', placeholder='Verify password', ng-disabled='created')
+
+        .field.inline
+          center
+            .ui.checkbox
+              input(type='checkbox', name='robotchecker', ng-model='robotchecker', ng-disabled='created')
+              label Check this if you're not a sith lord.
+        center
+          .ui.red.submit.button
+            p Create account!
+          .ui.gray.button(onclick="location.href='/login'")
+            p Cancel
+    script.
+      $('.ui.form').form({
+        inline: true,
+        fields: {
+          'username': 'empty',
+          'email': 'email',
+          'password': 'minLength[6]',
+          'verify-password': 'match[password]',
+          'robotchecker': 'checked'
+        }
+      });

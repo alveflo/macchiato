@@ -42,11 +42,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 var index = require('./routes/index');
 var users = require('./routes/users');
-var auth = require('./routes/auth');
 var dashboard = require('./routes/dashboard');
 
 app.use('/', index(passport));
-app.use('/login', auth(passport));
 app.use('/users', users(passport));
 app.use('/dashboard', dashboard(passport));
 
