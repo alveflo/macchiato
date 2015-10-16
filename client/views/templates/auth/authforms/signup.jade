@@ -3,7 +3,7 @@ include ../../../mixins/utils.jade
   #signup.column
     center
       +gray-logo(64)
-    form.ui.medium.form(action="/signup", method="POST")
+    form.ui.medium.form(action="/login/signup", method="POST")
       .ui.stacked.segment
         h2.ui.red.header.center.aligned Create new account
         .field
@@ -32,11 +32,18 @@ include ../../../mixins/utils.jade
           .ui.checkbox
             input(type='checkbox', name='robotchecker', ng-model='robotchecker', ng-disabled='created')
             label Check this if you're not a sith lord.
-        button.ui.red.submit.button(ng-click='register()')
+        .ui.red.submit.button
           p Create account!
-        button.ui.gray.button(onclick="location.href='#/'")
+        .ui.gray.button(onclick="location.href='/login'")
           p Cancel
-        .ui.login.error.message(ng-model='errorMsg', ng-class='{"hidden": !errorMsg}')
-          p {{errorMsg}}
-        .ui.login.success.message(ng-model='successMsg', ng-class='{"hidden": !successMsg}')
-          p {{successMsg}}
+    script.
+      $('.ui.form').form({
+        inline: true,
+        fields: {
+          'username': 'empty',
+          'email': 'email',
+          'password': 'minLength[6]',
+          'verify-password': 'match[password]',
+          'robotchecker': 'checked'
+        }
+      });

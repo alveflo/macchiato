@@ -23,3 +23,11 @@ include ../../../mixins/utils.jade
     .ui.message
       p
         a(href='#signup') Sign up!
+    script.
+      $('.ui.form').form({
+        inline: true,
+        fields: {
+          'username': 'empty',
+          'password': 'empty'
+        },
+      });

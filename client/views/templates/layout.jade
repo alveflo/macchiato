@@ -2,5 +2,14 @@ doctype html
 html(lang="en")
   include ../includes/head
   body
-    block content
+    #topmenu.ui.borderless.inverted.menu
+      .container
+        .header.item
+          p makiato
+        a(href='#').item.active Home
+        a(href='#').item Help
+        .right.menu
+          a(href='/signout').item Sign out
+    .container
+      block content
     include ../includes/footer

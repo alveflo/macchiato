@@ -1,15 +1,12 @@
 (function(){'use strict';})();
 
-var app = angular.module('mLogin', ['ngRoute', 'mLoginControllers']);
-
+var app = angular.module('mLogin', ['ngRoute']);
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/signup', {
-        templateUrl: 'login/signup',
-        controller: 'SignupCtrl'
+        templateUrl: 'login/signup'
       })
       .otherwise({
-        templateUrl: 'login/login',
-        controller: 'LoginCtrl'
+        templateUrl: 'login/login'
       });
   }]);

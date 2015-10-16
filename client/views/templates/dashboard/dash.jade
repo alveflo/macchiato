@@ -1,40 +1,23 @@
 extends ../layout
 block content
-  .ui.borderless.main.menu
-    .ui.text.container
-      .header.item
-        +gray-logo(32)
-      a(href='#').item Home
-      a(href='#').item Help
-  .ui.main.text.container
-    .ui.grid
-      .four.wide.column
-        .ui.vertical.fluid.tabular.menu
-          a.item.active(data-tab='first') Start
-          a.item(data-tab='second') Workspaces
-          a.item(data-tab='third') Settings
-      .twelve.wide.stretched.column
-        .ui.tab.segment.active(data-tab='first')
-          p First.
-          br
-          p First.
-          br
-          p First.
-          br
-          p First.
-          br
-          p First.
-          br
-          p First.
-          br
-          p First.
-          br
-          p First.
-          br
-        .ui.tab.segment(data-tab='second')
-          p Second.
-        .ui.tab.segment(data-tab='third')
-          p Third.
+  .ui.grid
+    .four.wide.column
+      .ui.secondary.vertical.pointing.tabular.menu
+        a.item.active(data-tab='first') Start
+        a.item(data-tab='second') Workspaces
+        a.item(data-tab='third') Settings
+
+    .twelve.wide.column
+      .ui.tab.segment.active(data-tab='first')
+        h1 Welcome back, #{user.username}!
+        p Create new repository
+      .ui.tab.segment(data-tab='second')
+        h1 Workspaces
+        .list
+          .item W1
+          .item W2
+      .ui.tab.segment(data-tab='third')
+        h1 Settings
   script(type='text/javascript').
     $(document).ready(function() {
       $('.tabular .item').tab({ history: false });
