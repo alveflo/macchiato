@@ -3,9 +3,12 @@ block content
   #signup.column
     center
       +gray-logo(64)
-    form.ui.medium.form(action="/login/signup", method="POST")
+    form.ui.medium.form(action="/signup", method="POST")
       .ui.stacked.segment
         h2.ui.red.header.center.aligned Create new account
+        if message
+          .ui.login.error.message
+            p= message
         .two.fields.right.aligned
           .field
             label Username
