@@ -2,10 +2,11 @@ extends layout.jade
 block content
   .column
     center
-      +gray-logo(64)
+      //+gray-logo(64)
+      a.ui.brown.circular.label.massive m
     form.ui.large.form.left.aligned(action="/login", method="POST")
       .ui.stacked.segment
-        h2.ui.red.header.center.aligned Sign in to your account
+        h2.ui.black.header.center.aligned Sign in to your account
         if message
           .ui.login.error.message
             p= message
@@ -17,7 +18,7 @@ block content
           .ui.left.icon.input
             i.lock.icon
             input(type='password', name='password', placeholder='Password')
-        button.ui.fluid.large.red.submit.button
+        button.ui.fluid.large.brown.submit.button
           p Login
     .ui.message.ui.center.aligned
       center

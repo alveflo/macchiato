@@ -2,10 +2,11 @@ extends layout.jade
 block content
   #signup.column
     center
-      +gray-logo(64)
+      //+gray-logo(64)
+      a.ui.brown.circular.label.massive m
     form.ui.medium.form(action="/signup", method="POST")
       .ui.stacked.segment
-        h2.ui.red.header.center.aligned Create new account
+        h2.ui.black.header.center.aligned Create new account
         if message
           .ui.login.error.message
             p= message
@@ -38,7 +39,7 @@ block content
               input(type='checkbox', name='robotchecker', ng-model='robotchecker', ng-disabled='created')
               label Check this if you're not a sith lord.
         center
-          .ui.red.submit.button
+          .ui.brown.submit.button
             p Create account!
           .ui.gray.button(onclick="location.href='/login'")
             p Cancel
