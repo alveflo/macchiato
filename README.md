@@ -1,5 +1,5 @@
-# makiato
-![alt tag](https://travis-ci.org/victorzki/makiato-fe.svg?branch=master "Travis status")
+# makiato 
+[![Build status](https://travis-ci.org/victorzki/makiato.svg?branch=master)](https://travis-ci.org/victorzki/makiato)
 
 Makiato application.
 
