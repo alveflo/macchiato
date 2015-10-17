@@ -7,6 +7,10 @@ module.exports = {
       return gulp.src(paths.client.img)
           .pipe(gulp.dest(paths.build.public.img));
   },
+  fonts: function() {
+      return gulp.src(paths.client.fonts)
+          .pipe(gulp.dest(paths.build.public.fonts));
+  },
   bower: function() {
     return gulp.src(mainBowerFiles())
         .pipe(gulp.dest(paths.build.public.assets));
