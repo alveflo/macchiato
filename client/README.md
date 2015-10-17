@@ -1,9 +1,3 @@
-### Installation
-```
-$ npm install
-$ bower install
-```
-
 ### Run
 ```
 - Build
