@@ -1,7 +1,6 @@
-# makiato
+# makiato back-end
 [![Build status](https://travis-ci.org/victorzki/makiato.svg?branch=master)](https://travis-ci.org/victorzki/makiato)
 
-Makiato back-end
 ###### Using
 * Express
 * Passport
