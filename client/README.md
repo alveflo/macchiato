@@ -1,8 +1,3 @@
-# makiato front-end
-[![Build status](https://travis-ci.org/victorzki/makiato.svg?branch=master)](https://travis-ci.org/victorzki/makiato)
-
-Makiato front-end
-
 ### Installation
 ```
 $ npm install
