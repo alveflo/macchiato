@@ -1,8 +1,8 @@
 doctype html
 html(lang="en")
-  include ../../mixins/utils.jade
+  include ../../mixins/utils
   head
-    include ../../includes/head.jade
+    include ../../includes/head
   body
     #topmenu.ui.borderless.menu
       .container
@@ -14,3 +14,4 @@ html(lang="en")
           a(href='/signout').item Sign out
     #content.container
       block content
+    include ../../includes/footer
