@@ -12,13 +12,32 @@ block content
         h1 Welcome back, #{user.username}!
         p Create new repository
       .ui.tab.segment(data-tab='second')
+
         h1 Workspaces
-        .list
-          .item W1
-          .item W2
+
+        button.ui.basic.button #[i.icon.plus] Add new workspace
+
+        each workspace in workspaces
+          .ui.relaxed.divided.list
+            .item
+              i.large.icon.disk.outline.middle.aligned
+              .content
+                a.header= workspace.name
+                .description= workspace.description
+
       .ui.tab.segment(data-tab='third')
         h1 Settings
+        
+        
+  include modals/new
+  //include modals/edit
+  include modals/delete
   script(type='text/javascript').
     $(document).ready(function() {
       $('.tabular .item').tab({ history: false });
+      $('.ui.basic.button').click(function() {
+        $('#delete')
+          .modal('setting', 'transition', 'horizontal flip')
+          .modal('show');
+      });
     });

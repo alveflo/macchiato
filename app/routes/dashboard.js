@@ -8,7 +8,20 @@ module.exports = function(passport) {
     res.render('dashboard/dash', {
       version: GLOBAL.makiatoVersion,
       pretty: true,
-      user: req.user
+      user: req.user,
+      workspaces: [
+        {
+          'name': 'Simple page',
+          'description': 'A personal home page',
+          'path': 'user/' + req.user.username + '/personal-home-page',
+        },
+        {
+          'name': 'Company page',
+          'description': 'Company page for The Empire',
+          'path': 'user/' + req.user.username + '/company-page',
+        }
+
+      ]
     })
   });
   return router;
