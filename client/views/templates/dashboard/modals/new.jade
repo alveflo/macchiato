@@ -3,5 +3,9 @@
   .header
     p Create new workspace
   .content
-    p Name
-    
+    form.ui.form
+      .field
+        label Name
+        input(type='text' name='ws-name' placeholder='Name')
+      .field
+        button.ui.button Create

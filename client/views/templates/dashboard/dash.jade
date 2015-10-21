@@ -15,7 +15,7 @@ block content
 
         h1 Workspaces
 
-        button.ui.basic.button #[i.icon.plus] Add new workspace
+        button.ui.basic.button.new-ws #[i.icon.plus] Add new workspace
 
         each workspace in workspaces
           .ui.relaxed.divided.list
@@ -24,18 +24,26 @@ block content
               .content
                 a.header= workspace.name
                 .description= workspace.description
+                a.delete-ws Delete
 
       .ui.tab.segment(data-tab='third')
         h1 Settings
-        
-        
+
+
   include modals/new
   //include modals/edit
   include modals/delete
   script(type='text/javascript').
     $(document).ready(function() {
       $('.tabular .item').tab({ history: false });
-      $('.ui.basic.button').click(function() {
+
+      $('.new-ws').click(function() {
+        $('#new')
+          .modal('setting', 'transition', 'horizontal flip')
+          .modal('show');
+      });
+
+      $('.delete-ws').click(function() {
         $('#delete')
           .modal('setting', 'transition', 'horizontal flip')
           .modal('show');
