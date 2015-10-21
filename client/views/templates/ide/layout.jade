@@ -1,0 +1,52 @@
+doctype html
+html(lang="en")
+  include ../../mixins/utils
+  head
+    include ../../includes/head
+    +loadcss('./style/ide.css')
+    +loadcss('./assets/jstree/themes/default/style.min.css')
+    +loadjs('./assets/jstree/jstree.min.js')
+  body
+    #topmenu.ui.borderless.menu
+      .header.item
+        a.ui.brown.circular.label.big m
+      a(href='#').item.active Home
+      a(href='#').item Help
+      .right.menu
+        a(href='/signout').item Sign out
+    #content
+      h3 Editing: My first app
+      .ui.grid
+        .eight.wide.column.left.floated.middle.aligned
+          button.ui.basic.green.button Save
+        .eight.wide.column.right.floated.right.aligned
+          button.ui.basic.button Deploy
+          button.ui.basic.button Preview
+      .ui.grid
+        .three.wide.column
+          #foldertree
+            script(type="text/javascript").
+              $('#foldertree').jstree({
+                'plugins': ['wholerow', 'contextmenu', 'state'],
+                'core' : {
+                  'data' : [
+                    { "text" : "Root node", "children" : [
+                        { 
+                          "text" : "Child node 1",
+                          "children": [
+                          {
+                            'text': 'foo'
+                          },
+                          {
+                            'text': 'bar'
+                          }
+                          ]
+                        },
+                        { "text" : "Child node 2" }
+                    ]}
+                  ]
+                }
+              });
+        .thirteen.wide.column
+          #editor
+            block editor

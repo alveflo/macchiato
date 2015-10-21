@@ -15,7 +15,11 @@ module.exports = {
     return gulp.src(mainBowerFiles())
         .pipe(gulp.dest(paths.build.public.assets));
   },
-  semantic: function() {
+  vendors: function() {
+    gulp.src(paths.client.ace)
+        .pipe(gulp.dest(paths.build.public.assets_ace));
+    gulp.src(paths.client.jstree)
+        .pipe(gulp.dest(paths.build.public.assets_jstree));
     return gulp.src(paths.client.semantic)
         .pipe(gulp.dest(paths.build.public.assets_semantic));
   }

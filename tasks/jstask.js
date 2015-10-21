@@ -10,8 +10,7 @@ module.exports = function() {
         .pipe(jshint({
           'globals': {
             "$": false,
-            "angular": false,
-            "Firebase": false
+            "angular": false
           }
         }))
         .pipe(jshint.reporter('default'))

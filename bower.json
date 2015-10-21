@@ -18,6 +18,8 @@
     "angular": "~1.4.7",
     "semantic-ui": "~2.1.4",
     "angular-route": "~1.4.7",
-    "jquery-address": "*"
+    "jquery-address": "*",
+    "ace-builds": "~1.2.0",
+    "jstree": "~3.2.1"
   }
 }

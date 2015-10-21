@@ -1,0 +1,24 @@
+extends layout
+block editor
+  +loadjs('./assets/ace/ace.js')  
+  script(type='text/javascript').
+    ace.require('./assets/ace/ext-language_tools.js')
+    var editor = ace.edit('editor');
+    editor.setOptions({
+      fontSize: '12pt'
+    });
+    editor.setTheme('ace/theme/tomorrow');
+    editor.getSession().setMode('ace/mode/html');
+    var html = "<!doctype html>\n";
+    html += "<html>\n";
+    html += "    <head>\n";
+    html += "        <title>\n";
+    html += "            My first application\n";
+    html += "        </title>\n";
+    html += "    </head>\n";
+    html += "    <body>\n";
+    html += "        <h1>Applify!</h1>\n";
+    html += "        <p>This is my first awesome makiato application</p>\n";
+    html += "    </body>\n";
+    html += "</html>\n";
+    editor.getSession().setValue(html);

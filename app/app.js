@@ -43,10 +43,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 var index = require('./routes/index');
 var users = require('./routes/users');
 var dashboard = require('./routes/dashboard');
+var ide = require('./routes/ide');
 
 app.use('/', index(passport));
 app.use('/users', users(passport));
 app.use('/dashboard', dashboard(passport));
+app.use('/ide', ide(passport));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
