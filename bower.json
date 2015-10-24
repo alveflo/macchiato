@@ -15,11 +15,20 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
-    "angular": "~1.4.7",
+    "angular": "1.2.29",
     "semantic-ui": "~2.1.4",
-    "angular-route": "~1.4.7",
+    "angular-route": "1.2.29",
     "jquery-address": "*",
     "ace-builds": "~1.2.0",
-    "jstree": "~3.2.1"
+    "angular-tree-control": "~0.2.21"
+  },
+  "overrides": {
+    "angular-tree-control": {
+      "main": [
+        "./angular-tree-control.js",
+        "./css/tree-control.css",
+        "./css/tree-control-attribute.css"
+      ]
+    }
   }
 }

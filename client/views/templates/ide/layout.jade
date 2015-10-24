@@ -3,9 +3,10 @@ html(lang="en")
   include ../../mixins/utils
   head
     include ../../includes/head
+    +loadjs('./assets/angular-tree-control.js')
     +loadcss('./style/ide.css')
-    +loadcss('./assets/jstree/themes/default/style.min.css')
-    +loadjs('./assets/jstree/jstree.min.js')
+    +loadcss('./assets/tree-control.css')
+    +loadcss('./assets/tree-control-attribute.css')
   body
     #topmenu.ui.borderless.menu
       .header.item
@@ -25,28 +26,7 @@ html(lang="en")
       .ui.grid
         .three.wide.column
           #foldertree
-            script(type="text/javascript").
-              $('#foldertree').jstree({
-                'plugins': ['wholerow', 'contextmenu', 'state'],
-                'core' : {
-                  'data' : [
-                    { "text" : "Root node", "children" : [
-                        { 
-                          "text" : "Child node 1",
-                          "children": [
-                          {
-                            'text': 'foo'
-                          },
-                          {
-                            'text': 'bar'
-                          }
-                          ]
-                        },
-                        { "text" : "Child node 2" }
-                    ]}
-                  ]
-                }
-              });
+
         .thirteen.wide.column
           #editor
             block editor
