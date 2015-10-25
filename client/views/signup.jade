@@ -1,30 +1,28 @@
-extends layout.jade
+extends templates/auth/layout
 block content
-  .column.center.aligned
+  .column.center.aligned(ng-controller="SignupController")
     center
-      //+gray-logo(64)
       a.ui.brown.circular.label.massive m
     form.ui.medium.form(action="/signup", method="POST")
       .ui.stacked.segment
         h2.ui.black.header Create new account
-        if message
-          .ui.login.error.message
-            p= message
+        .ui.login.error.message(ng-show='error != ""')
+          p {{ error }}
         .field
           label Username
           .ui.left.icon.input
             i.user.icon
-            input(type='text', name='username', placeholder='Username', ng-model='user.username', ng-disabled='created')
+            input(type='text', name='username', placeholder='Username', ng-model='formData.username', ng-disabled='created')
         .field
           label E-mail address
           .ui.left.icon.input
             i.mail.icon
-            input(type='text', name='email', placeholder='E-mail address', ng-model='user.email', ng-disabled='created')
+            input(type='text', name='email', placeholder='E-mail address', ng-model='formData.email', ng-disabled='created')
         .field
           label Password
           .ui.left.icon.input
             i.lock.icon
-            input(type='password', name='password', placeholder='Password', ng-model='user.password', ng-disabled='created')
+            input(type='password', name='password', placeholder='Password', ng-model='formData.password', ng-disabled='created')
         .field
           label Verify password
           .ui.left.icon.input
@@ -33,17 +31,7 @@ block content
         .field
           p Captcha?
         center
-          .ui.brown.submit.button
+          .ui.brown.submit.button(ng-click="signup()")
             p Create account!
           .ui.gray.button(onclick="location.href='/login'")
             p Cancel
-    script.
-      $('.ui.form').form({
-        inline: true,
-        fields: {
-          'username': 'empty',
-          'email': 'email',
-          'password': 'minLength[6]',
-          'verify-password': 'match[password]'
-        }
-      });

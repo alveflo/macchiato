@@ -1,4 +1,4 @@
-extends layout
+extends templates/dashboard/layout
 block content
   .ui.grid
     .four.wide.column
@@ -9,29 +9,29 @@ block content
 
     .twelve.wide.column
       .ui.tab.segment.active(data-tab='first')
-        h1 Welcome back, #{user.username}!
+        h1 Welcome back, {user.username}!
         p Create new repository
       .ui.tab.segment(data-tab='second')
 
         h1 Workspaces
         button.ui.basic.button.new-ws #[i.icon.plus] Add new workspace
 
-        each workspace in workspaces
-          .ui.relaxed.divided.list
-            .item
-              i.large.icon.disk.outline.middle.aligned
-              .content
-                a.header= workspace.name
-                .description= workspace.description
-                a.delete-ws Delete
+        h2 Foreach workspace
+        .ui.relaxed.divided.list
+          .item
+            i.large.icon.disk.outline.middle.aligned
+            .content
+              a.header workspace.name
+              .description workspace.description
+              a.delete-ws Delete
 
       .ui.tab.segment(data-tab='third')
         h1 Settings
 
 
-  include modals/new
+  include templates/dashboard/modals/new
   //include modals/edit
-  include modals/delete
+  include templates/dashboard/modals/delete
   script(type='text/javascript').
     $(document).ready(function() {
       $('.tabular .item').tab({ history: false });

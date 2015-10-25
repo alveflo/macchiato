@@ -1,10 +1,10 @@
 module.exports = {
   'client': {
-    'views':              'client/views/**/*.jade',
+    'views':              'client/views/*.jade',
     'style':              'client/style/**/*.styl',
     'js':                 'client/js/*.js',
     'jsng':               'client/js/ng/**/*.js',
-    'img':                'client/img/**/*.png',
+    'img':                'client/img/**/*',
     'fonts':              'client/font/**/*.ttf',
     'semantic':           'bower_components/semantic-ui/dist/**/*',
     'ace':                'bower_components/ace-builds/src-noconflict/**/*.js'

@@ -1,0 +1,23 @@
+extends templates/auth/layout
+block content
+  .column(ng-controller='LoginController')
+    center
+      a.ui.brown.circular.label.massive m
+    form.ui.large.form.left.aligned(action="/login", method="POST")
+      .ui.stacked.segment
+        h2.ui.black.header.center.aligned Sign in to your account
+        .ui.login.error.message(ng-show="error != ''")
+          p {{ error }}
+        .field
+          .ui.left.icon.input
+            i.user.icon
+            input(type='text', name='username', placeholder='Username', ng-model='formData.username')
+        .field
+          .ui.left.icon.input
+            i.lock.icon
+            input(type='password', name='password', placeholder='Password', ng-model='formData.password')
+        button.ui.fluid.large.brown.submit.button(ng-click='login()')
+          p Login
+    .ui.message.ui.center.aligned
+      center
+        a(href='/signup') Sign up!
