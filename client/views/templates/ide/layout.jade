@@ -1,0 +1,34 @@
+doctype html
+html(lang="en")
+  include ../../mixins/utils
+  head
+    include ../../includes/head
+    +loadjs('./assets/angular-tree-control.js')
+    +loadcss('./style/ide.css')
+    +loadcss('./assets/tree-control.css')
+    +loadcss('./assets/tree-control-attribute.css')
+  body
+    #topmenu.ui.borderless.menu
+      .header.item
+        a.ui.brown.circular.label.big m
+      a(href='#').item.active Home
+      a(href='#').item Help
+      .right.menu
+        a(href='/signout').item Sign out
+    #content
+      h3 Editing: My first app
+      .ui.grid
+        .eight.wide.column.left.floated.middle.aligned
+          button.ui.basic.green.button Save
+        .eight.wide.column.right.floated.right.aligned
+          button.ui.basic.button Deploy
+          button.ui.basic.button Preview
+      .ui.grid
+        .three.wide.column
+          #foldertree
+            p Folder
+            p - SubFolder 
+            p - SubFolder
+        .thirteen.wide.column
+          #editor
+            block editor
