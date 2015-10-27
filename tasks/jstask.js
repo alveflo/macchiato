@@ -5,6 +5,12 @@ var concat = require('gulp-concat'),
     paths = require('./paths');
 
 module.exports = function() {
+  var hintBackend = function() {
+    gulp.src(paths.build.backendjs)
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
+  }
+
   var buildAndConcat = function(path, filename, outPath) {
     gulp.src(path)
         .pipe(jshint({
@@ -21,6 +27,7 @@ module.exports = function() {
         })*/
         .pipe(gulp.dest(outPath));
   };
+  hintBackend();
   buildAndConcat(paths.client.js, 'makiato.js', paths.build.public.js);
   return buildAndConcat(paths.client.jsng, 'ng-makiato.js', paths.build.public.js);
 };

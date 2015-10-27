@@ -10,4 +10,4 @@ module.exports = function(views_dir, passport) {
     });
   });
   return router;
-}
+};
