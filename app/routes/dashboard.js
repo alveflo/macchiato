@@ -12,21 +12,21 @@ module.exports = function(views_dir, passport) {
   });
 
   router.get('/start', authCtrl, function(req, res, next) {
-  	res.sendFile(path.join(views_dir, 'workspacestart.html'), function (err) {
+  	res.sendFile(path.join(views_dir, 'dashboard/start.html'), function (err) {
   		if (err) { console.log(err); }
   		else { console.log('Workspacestart!'); }
   	});
   });
 
   router.get('/workspaces', authCtrl, function(req, res, next){
-  	res.sendFile(path.join(views_dir, 'workspaces.html'), function (err) {
+  	res.sendFile(path.join(views_dir, 'dashboard/workspaces.html'), function (err) {
   		if (err) { console.log(err); }
   		else { console.log('WOOOORKSPAAAAAEEEJS!!'); }
   	});
   });
 
   router.get('/settings', authCtrl, function(req, res, next){
-  	res.sendFile(path.join(views_dir, 'settings.html'), function (err) {
+  	res.sendFile(path.join(views_dir, 'dashboard/settings.html'), function (err) {
   		if (err) { console.log(err); }
   		else { console.log('HERE COMES SETTINGS!!'); }
   	});

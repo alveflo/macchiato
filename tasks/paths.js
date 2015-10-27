@@ -1,6 +1,6 @@
 module.exports = {
   'client': {
-    'views':              'client/views/*.jade',
+    'views':              ['client/views/*.jade', 'client/views/ng-views/**/*.jade'],
     'style':              'client/style/**/*.styl',
     'js':                 'client/js/*.js',
     'jsng':               'client/js/ng/**/*.js',
