@@ -20,7 +20,7 @@ memberModule.controller('LoginController', ['$scope', '$http', function($scope, 
           $scope.error = data.error;
         } else {
           console.log(data);
-          window.location.replace('/dashboard');
+          window.location.replace('/dashboard#/start');
         }
       });
     }

@@ -1,33 +1,14 @@
 extends templates/dashboard/layout
 block content
-  .ui.grid
+  .ui.grid(ng-app="dashboardModule")
     .four.wide.column
       .ui.secondary.vertical.pointing.tabular.menu
-        a.item.active(data-tab='first') Start
-        a.item(data-tab='second') Workspaces
-        a.item(data-tab='third') Settings
+        a.item.active(ng-href="#/start") Start
+        a.item(ng-href="#/workspaces") Workspaces
+        a.item(ng-href="#/settings") Settings
 
     .twelve.wide.column
-      .ui.tab.segment.active(data-tab='first')
-        h1 Welcome back, {user.username}!
-        p Create new repository
-      .ui.tab.segment(data-tab='second')
-
-        h1 Workspaces
-        button.ui.basic.button.new-ws #[i.icon.plus] Add new workspace
-
-        h2 Foreach workspace
-        .ui.relaxed.divided.list
-          .item
-            i.large.icon.disk.outline.middle.aligned
-            .content
-              a.header workspace.name
-              .description workspace.description
-              a.delete-ws Delete
-
-      .ui.tab.segment(data-tab='third')
-        h1 Settings
-
+      div(ng-view="")
 
   include templates/dashboard/modals/new
   //include modals/edit
@@ -35,6 +16,14 @@ block content
   script(type='text/javascript').
     $(document).ready(function() {
       $('.tabular .item').tab({ history: false });
+
+      $('.tabular .item').click(function() {
+        var $tab = $(this);
+
+        $tab.parent().find('.item').removeClass('active');
+
+        $tab.addClass('active');
+      });
 
       $('.new-ws').click(function() {
         $('#new')
