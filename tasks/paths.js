@@ -20,6 +20,7 @@ module.exports = {
       'style':            'app/public/style',
     },
     'public_dir':         'app/public',
-    'views':              'app/views'
+    'views':              'app/views',
+    'backendjs':          ['app/**/*.js', '!app/public/**/*.js']
   }
 }

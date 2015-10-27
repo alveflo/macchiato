@@ -23,11 +23,11 @@ module.exports = function(views_dir, passport) {
   });
 
   router.get('/', function(req, res) {
-    res.sendFile(path.join(views_dir, 'index.html')), function (err) {
+    res.sendFile(path.join(views_dir, 'index.html'), function (err) {
       if (err) {
         console.log(err);
       }
-    };
+    });
   });
 
   router.get('/signout', function(req, res) {
@@ -38,10 +38,10 @@ module.exports = function(views_dir, passport) {
   router.post('/signup', function(req, res, next) {
     passport.authenticate('signup', function(err, user, info) {
       if (err) { return next(err); }
-      if (!user) { return res.json({ error: req.flash('message').toString() }) }
+      if (!user) { return res.json({ error: req.flash('message').toString() }); }
 
       req.logIn(user, function(error) {
-          if (error) { return res.json({ 'error': error }) }
+          if (error) { return res.json({ 'error': error }); }
           return res.json({ success: 'Ok!' });
       });
 
@@ -51,10 +51,10 @@ module.exports = function(views_dir, passport) {
   router.post('/login', function(req, res, next) {
     passport.authenticate('login', function(err, user, info) {
       if (err) { return next(err); }
-      if (!user) { return res.json({ error: req.flash('message').toString() }) }
+      if (!user) { return res.json({ error: req.flash('message').toString() }); }
 
       req.logIn(user, function(error) {
-          if (error) { return res.send({ 'error': error }) }
+          if (error) { return res.send({ 'error': error }); }
           return res.json({ success: 'Ok!' });
       });
 
@@ -62,4 +62,4 @@ module.exports = function(views_dir, passport) {
   });
 
   return router;
-}
+};
